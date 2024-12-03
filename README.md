@@ -20,3 +20,12 @@ and improving cricket performance.
 - pyopengl
 - numpy
 - sklearn
+
+## Installing Dependancies
+- !pip install opencv-python
+- !pip install yolov9
+- !pip install tensorflow
+- !pip install PyOpenGL
+- !pip install numpy
+- !pip install scikit-learn
+  
