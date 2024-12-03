@@ -10,7 +10,7 @@ handled by a different team member, providing a holistic approach to understandi
 and improving cricket performance.
 
 ## Group Members
-- Harshana W.A.J. -IT21162350 -IT
+- Harshana W.A.J. - IT21162350 - IT
 
 
 ## Dependancies
