@@ -11,3 +11,12 @@ and improving cricket performance.
 
 ## Group Members
 - Harshana W.A.J. -IT21162350 -IT
+
+
+## Dependancies
+- open-cv
+- yolov9
+- tensorflow
+- pyopengl
+- numpy
+- sklearn
