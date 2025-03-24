@@ -1,0 +1,13 @@
+streamlit
+requests
+pandas
+plotly
+Pillow
+flask
+flask-cors
+werkzeug
+opencv-python
+numpy
+ultralytics
+supervision
+google-generativeai
