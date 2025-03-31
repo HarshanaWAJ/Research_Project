@@ -1,0 +1,257 @@
+.lbw-classification {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  position: relative;
+  min-height: 100vh;
+}
+
+.lbw-classification .heading {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.lbw-classification .main {
+  display: flex;
+  flex-direction: row; /* Align left and right sections horizontally */
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.lbw-classification .left-section, .lbw-classification .right-section {
+  width: 40%;
+}
+
+.lbw-classification .back {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.lbw-classification .back:hover {
+  color: #0056b3;
+  transform: scale(1.05);
+}
+
+.lbw-classification .back:focus {
+  outline: 2px solid #ffbf00;
+  outline-offset: 4px;
+}
+
+.lbw-classification .back:active {
+  color: #003f7f;
+  transform: scale(1);
+}
+
+
+/* File Upload Section CSS */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+/* File upload area */
+.upload-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 350px;
+  padding: 40px;
+  background-color: #e9f7e9;
+  border: 2px dashed #4CAF50;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-container:hover {
+  background-color: #c8f1c8;
+}
+
+.upload-container p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+  font-weight: bold;
+}
+
+.upload-container input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Upload button styles */
+.upload-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #45a049;
+}
+
+.upload-btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+/* Instructions Section */
+.instructions {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #666;
+}
+
+.instructions h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.instructions p {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Progress Bar */
+
+.progress-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;  /* Ensure it appears on top of other content */
+}
+
+.progress-overlay-content {
+  text-align: center;
+  color: white;
+  width: 80%;
+  max-width: 500px;
+}
+
+.progress-overlay .progress-bar {
+  margin-top: 20px;
+  width: 100%;
+  height: 20px;
+}
+
+/* Optional styling for the progress bar's label */
+.progress-bar .progress-bar-label {
+  color: white;
+  font-weight: bold;
+}
+
+
+/* Result Section CSS */
+.result {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  position: relative;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  color: #333;
+}
+
+.out {
+  background-color: #ff4d4d; /* Red color for "Out" */
+  color: white;
+}
+
+.not-out {
+  background-color: #4caf50; /* Green color for "Not Out" */
+  color: white;
+}
+
+.result-icon {
+  margin-right: 15px;
+  font-size: 2rem;
+}
+
+.result p {
+  margin: 0;
+}
+
+.result-text {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.result-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.result-button:hover {
+  background-color: #555;
+}
+
+.result-animated {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
