@@ -1,0 +1,64 @@
+.wide-ball-classification {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  position: relative;
+  min-height: 100vh;
+}
+
+.wide-ball-classification .heading {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.wide-ball-classification .main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 20px;
+  align-items: flex-start; /* Align sections to the top */
+}
+
+.wide-ball-classification .left-section, 
+.wide-ball-classification .right-section {
+  width: 45%; /* Adjust width to ensure they fit well */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.wide-ball-classification .left-section {
+  padding: 10px; /* Optional: ensure consistent padding */
+}
+
+.wide-ball-classification .right-section {
+  padding: 10px; /* Optional: ensure consistent padding */
+}
+
+.wide-ball-classification .back {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.wide-ball-classification .back:hover {
+  color: #0056b3;
+  transform: scale(1.05);
+}
+
+.wide-ball-classification .back:focus {
+  outline: 2px solid #ffbf00;
+  outline-offset: 4px;
+}
+
+.wide-ball-classification .back:active {
+  color: #003f7f;
+  transform: scale(1);
+}
