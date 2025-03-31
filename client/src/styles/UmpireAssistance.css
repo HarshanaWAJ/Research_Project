@@ -1,0 +1,119 @@
+/* UmpireAssistance.css */
+
+/* Set the parent container to take up full height of the viewport */
+.umpire-assistance-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100vh; /* Full height of the viewport */
+  box-sizing: border-box; /* Prevents padding from affecting the layout */
+}
+
+.umpire-assistance-main .left-section {
+  width: 48%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100%; /* Full height of the parent container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+}
+
+
+/* Slideshow container styles */
+.slideshow {
+  width: 100%;  /* Full width of the parent container */
+  height: 100%;  /* Full height of the parent container */
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  background-size: cover; /* Ensures image covers the area */
+  background-position: center; /* Ensures image is centered */
+  opacity: 0;
+  transition: opacity 500ms ease-in-out; /* Fade effect for images */
+}
+
+/* Fade-in class that will trigger fade-in transition for the image */
+.fade-in {
+  opacity: 1;
+}
+
+/* Heading Styles for left section */
+.umpire-assistance-main .left-section .heading-one {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 3.0rem;
+  color: black;
+  z-index: 2;
+}
+
+.umpire-assistance-main .left-section .heading-two {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: black;
+  z-index: 2;
+}
+
+/* Right section - Ensure it fills the available space */
+.umpire-assistance-main .right-section {
+  width: 48%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.umpire-assistance-main .right-section .heading {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', Geneva, Verdana, sans-serif;
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+/* Card Container */
+.card-view {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Hover effect on cards */
+.card-view:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+/* Card Styling */
+.card {
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; 
+  transition: transform 0.3s ease; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Card Hover Effect */
+.card:hover {
+  transform: scale(1.05); /* Slight scale effect when hovered */
+}
+
+/* Lottie Animation Centering */
+.card-img-top {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  overflow: hidden;
+}
+
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ensures animation is centered */
+}
