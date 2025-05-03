@@ -532,6 +532,7 @@ def gemini_batsman_analyze():
     video_path = os.path.join(UPLOAD_FOLDER, video_filename)
     file.save(video_path)
     
+    
     # Get custom prompt if provided (override default batsman prompt)
     custom_prompt = request.form.get('prompt')
     
