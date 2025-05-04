@@ -101,3 +101,25 @@ class BowlerActionAnalyzer:
         return straightening_angle
 
     return angle
+
+    def extend_line(self, point1, point2, extension_length=100):
+        """
+        Extend a line beyond point2 in the same direction
+        
+        Args:
+            point1, point2: Line points
+            extension_length: Length to extend
+            
+        Returns:
+            tuple: Coordinates of extended point
+        """
+        import numpy as np
+        
+        if None in (point1, point2):
+            return None
+        direction = np.array(point2) - np.array(point1)
+        if np.all(direction == 0):
+            return None
+        direction = direction / np.linalg.norm(direction)
+        extended_point = np.array(point2) + direction * extension_length
+        return tuple(map(int, extended_point))
