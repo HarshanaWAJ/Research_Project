@@ -84,3 +84,20 @@ class BowlerActionAnalyzer:
     # Check for zero-length vectors to avoid division by zero
     norm_ba = np.linalg.norm(ba)
     norm_bc = np.linalg.norm(bc)
+
+    if norm_ba < 1e-10 or norm_bc < 1e-10:
+        return None  # Return None for degenerate angles
+
+    cosine_angle = np.dot(ba, bc) / (norm_ba * norm_bc)
+    # Ensure cosine is within valid range [-1.0, 1.0]
+    cosine_angle = np.clip(cosine_angle, -1.0, 1.0)
+    angle = np.degrees(np.arccos(cosine_angle))
+
+    # Adjust the angle for bowling analysis
+    # If the angle is close to 180, we want to measure how much it deviates from straight
+    if angle > 90:
+        # Calculate how much the arm deviates from being completely straight
+        straightening_angle = 180 - angle
+        return straightening_angle
+
+    return angle
