@@ -58,3 +58,29 @@ class BowlerActionAnalyzer:
                 print(f"Error loading model: {str(e)}")
                 raise
         return self.model
+
+    def calculate_angle(self, point1, point2, point3):
+    """
+    Calculate angle between three points with improved error handling
+
+    Args:
+        point1, point2, point3: Coordinate points (point2 is the vertex)
+
+    Returns:
+        float: Angle in degrees, adjusted for bowling analysis
+    """
+    import numpy as np
+
+    if None in (point1, point2, point3):
+        return None
+
+    a = np.array(point1)
+    b = np.array(point2)
+    c = np.array(point3)
+
+    ba = a - b
+    bc = c - b
+
+    # Check for zero-length vectors to avoid division by zero
+    norm_ba = np.linalg.norm(ba)
+    norm_bc = np.linalg.norm(bc)
