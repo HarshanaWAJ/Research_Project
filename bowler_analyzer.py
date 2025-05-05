@@ -166,3 +166,11 @@ class BowlerActionAnalyzer:
         if output_path is None:
             base_name = os.path.splitext(os.path.basename(video_path))[0]
             output_path = f"{base_name}_analyzed.mp4"
+
+        # Load model
+        try:
+            model = self.load_model()
+            print("Model loaded successfully:", self.model_path)
+        except Exception as e:
+            print(f"Failed to load model: {str(e)}")
+            raise   
