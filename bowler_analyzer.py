@@ -123,3 +123,23 @@ class BowlerActionAnalyzer:
         direction = direction / np.linalg.norm(direction)
         extended_point = np.array(point2) + direction * extension_length
         return tuple(map(int, extended_point))
+
+        def get_keypoint_coords(self, keypoints, idx, conf_threshold=0.5):
+        """
+        Extract coordinates from keypoints with confidence check
+        
+        Args:
+            keypoints: Keypoints array [x, y, conf]
+            idx: Index of keypoint to extract
+            conf_threshold: Minimum confidence for valid keypoint
+            
+        Returns:
+            tuple: (x, y) coordinates or None
+        """
+        try:
+            if keypoints[idx][2] >= conf_threshold:
+                return tuple(map(int, keypoints[idx][:2]))
+        except (IndexError, TypeError) as e:
+            print(f"Error getting keypoint coordinates: {str(e)}")
+            return None
+        return None
