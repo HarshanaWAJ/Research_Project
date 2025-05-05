@@ -161,3 +161,8 @@ class BowlerActionAnalyzer:
         import os
         import time
         import numpy as np
+
+        # Set default output path if not provided
+        if output_path is None:
+            base_name = os.path.splitext(os.path.basename(video_path))[0]
+            output_path = f"{base_name}_analyzed.mp4"
