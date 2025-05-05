@@ -174,3 +174,8 @@ class BowlerActionAnalyzer:
         except Exception as e:
             print(f"Failed to load model: {str(e)}")
             raise   
+
+         # Initialize video capture
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            raise ValueError(f"Error: Could not open video file {video_path}")
