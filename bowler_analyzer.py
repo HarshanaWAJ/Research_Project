@@ -143,3 +143,21 @@ class BowlerActionAnalyzer:
             print(f"Error getting keypoint coordinates: {str(e)}")
             return None
         return None
+
+         def analyze_bowling_action(self, video_path, bowling_arm='right', output_path=None, progress_callback=None):
+        """
+        Analyze bowling action from video
+        
+        Args:
+            video_path: Path to the video file
+            bowling_arm: 'right' or 'left'
+            output_path: Path to save analyzed video
+            progress_callback: Function to report progress
+            
+        Returns:
+            dict: Analysis results
+        """
+        import cv2
+        import os
+        import time
+        import numpy as np
