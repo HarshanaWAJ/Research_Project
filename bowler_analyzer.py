@@ -188,3 +188,13 @@ class BowlerActionAnalyzer:
         # Initialize video writer
         fourcc = cv2.VideoWriter_fourcc(*'mp4v')
         out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+
+        # Define keypoint indices based on bowling arm
+        if bowling_arm.lower() == 'right':
+            shoulder_idx = self.RIGHT_SHOULDER
+            elbow_idx = self.RIGHT_ELBOW
+            wrist_idx = self.RIGHT_WRIST
+        else:
+            shoulder_idx = self.LEFT_SHOULDER
+            elbow_idx = self.LEFT_ELBOW
+            wrist_idx = self.LEFT_WRIST
