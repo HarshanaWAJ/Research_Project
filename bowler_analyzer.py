@@ -198,3 +198,21 @@ class BowlerActionAnalyzer:
             shoulder_idx = self.LEFT_SHOULDER
             elbow_idx = self.LEFT_ELBOW
             wrist_idx = self.LEFT_WRIST
+
+        # Initialize tracking variables
+        frame_count = 0
+        detection_failures = 0
+        arm_angles = []
+        max_angle = 0
+        critical_frames = []
+        
+        # Progress update interval
+        update_interval = max(1, total_frames // 100)
+
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            frame_count += 1
+            
