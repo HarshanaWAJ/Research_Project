@@ -216,3 +216,30 @@ class BowlerActionAnalyzer:
 
             frame_count += 1
             
+        # Update progress
+            if progress_callback and frame_count % update_interval == 0:
+                progress = min(int(frame_count / total_frames * 100), 99)
+                progress_callback(progress, f"Processing frame {frame_count}/{total_frames}")
+
+            try:
+                # Run YOLOv11n pose prediction
+                results = model(frame, verbose=False)
+
+                if len(results) > 0 and hasattr(results[0], 'keypoints') and len(results[0].keypoints.data) > 0:
+                    # Find the bowler in the frame - usually the person most centered
+                    # if multiple people are detected
+                    best_person_idx = 0
+                    if len(results[0].keypoints.data) > 1:
+                        # If multiple people, find the person closest to center
+                        center_x = frame_width / 2
+                        center_y = frame_height / 2
+                        min_distance = float('inf')
+                        
+                        for i, kpts in enumerate(results[0].keypoints.data):
+                            # Use the nose keypoint as reference
+                            if kpts[self.NOSE][2] > 0.5:  # Check confidence
+                                nose_x, nose_y = kpts[self.NOSE][0], kpts[self.NOSE][1]
+                                dist = ((nose_x - center_x) ** 2 + (nose_y - center_y) ** 2) ** 0.5
+                                if dist < min_distance:
+                                    min_distance = dist
+                                    best_person_idx = i
