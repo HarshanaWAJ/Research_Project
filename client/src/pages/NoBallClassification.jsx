@@ -1,41 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/NoBallClassification.css';
 import axiosInstance from '../axiosInstance';
 
-const handleFileChange = (e, setErrorMessage) => {
+const handleFileChange = (e, setErrorMessage, setVideoURL) => {
   const file = e.target.files[0];
   if (file) {
     if (file.type !== 'video/mp4') {
       const message = 'Please upload an MP4 video file.';
       setErrorMessage(message);
-      toast.error(message); // Show error toast
-      e.target.value = ''; // Reset file input
+      toast.error(message);
+      e.target.value = '';
+      setVideoURL(null);
       return;
     }
 
     const videoElement = document.createElement('video');
     videoElement.src = URL.createObjectURL(file);
 
-    // Check video duration once the metadata is loaded
     videoElement.onloadedmetadata = () => {
       if (videoElement.duration > 30) {
         const message = 'Video duration should be less than or equal to 30 seconds.';
         setErrorMessage(message);
-        toast.error(message); // Show error toast
-        e.target.value = ''; // Reset file input
+        toast.error(message);
+        e.target.value = '';
+        setVideoURL(null);
       } else {
-        setErrorMessage(''); // Clear error messages if valid
+        setErrorMessage('');
+        setVideoURL(videoElement.src);
       }
     };
+  } else {
+    setVideoURL(null);
   }
 };
 
 const handleUploadClick = async (file, setIsLoading, setResult) => {
   if (!file) {
     const message = 'Please upload a valid video file first.';
-    toast.error(message); // Show error toast
+    toast.error(message);
     return;
   }
 
@@ -55,8 +59,8 @@ const handleUploadClick = async (file, setIsLoading, setResult) => {
     toast.dismiss();
 
     if (response.status === 200) {
-      const classificationResult = response.data.prediction; // Assuming the server returns 'prediction'
-      setResult(classificationResult); // Set the result in state
+      const classificationResult = response.data.prediction;
+      setResult(classificationResult);
     } else {
       toast.error(`Error: ${response.data.error || 'Something went wrong'}`);
     }
@@ -72,6 +76,8 @@ function NoBallClassification() {
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
+  const [videoURL, setVideoURL] = useState(null);
+  const videoRef = useRef(null);
 
   return (
     <div className="no-ball-classification">
@@ -86,8 +92,8 @@ function NoBallClassification() {
               type="file"
               id="file-upload"
               onChange={(e) => {
-                handleFileChange(e, setErrorMessage);
-                setFile(e.target.files[0]); // Store file in state
+                handleFileChange(e, setErrorMessage, setVideoURL);
+                setFile(e.target.files[0]);
               }}
               accept="video/mp4"
             />
@@ -109,14 +115,38 @@ function NoBallClassification() {
         <div className="right-section">
           {result ? (
             <div className="result">
-              <h4>Result: </h4>
-              <h4> {result}</h4>
+              <h4>Result:</h4>
+              <h4>{result}</h4>
             </div>
           ) : (
             <p>No result yet. Please upload a video to classify.</p>
           )}
+
+          {/* Video preview and controls */}
+          {videoURL && (
+            <div className="video-player">
+              <video ref={videoRef} src={videoURL} controls width="400" />
+              <div className="video-controls">
+                <button onClick={() => videoRef.current.play()}>Play</button>
+                <button onClick={() => videoRef.current.pause()}>Pause</button>
+                <button
+                  onClick={() => {
+                    if (videoRef.current.playbackRate > 0.25) {
+                      videoRef.current.playbackRate -= 0.25;
+                    }
+                  }}
+                >
+                  Slow Down
+                </button>
+                <button onClick={() => (videoRef.current.playbackRate = 1)}>
+                  Reset Speed
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
+
       <div className="back ml-5">
         <a href="/">Back to Umpire Assistant</a>
       </div>
